@@ -12,5 +12,4 @@ app.use("/",resgister)
 app.use("/dashboard",dashboard)
 app.use("/drugs",drugs)
 
-app.get("/",(req,res)=>{res.send("this is updated")})
 app.listen(PORT,console.log("Server is Running...")) 
