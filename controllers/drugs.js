@@ -5,12 +5,18 @@ exports.insertdrugs=(req,res)=>{
 
     const data=new drugsdb(req.body)
 
-    data.save().then((ress)=>{
+    data.save().then((ress)=>{ 
 
         res.status(201).json({
             status:"success",
             data:ress
         })
+    }).catch((err)=>{
+        if(err.name=="MongoError"){
+            return res.status(500).json({message:"This drug is already registered"})
+        }
+
+        res.status(404).json({message:err})
     })
 
 }
@@ -50,5 +56,19 @@ exports.deletedrug=(req,res)=>{
             data
     })
     })
+    
+}
+
+
+exports.qtylessthanten=(req,res)=>{
+
+    drugsdb.find({qty:{$lte:10}}) 
+    .then((data)=>{
+        res.status(200).json({
+            status:"success",
+            data
+        })
+    })
+
     
 }

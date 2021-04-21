@@ -12,6 +12,10 @@ const manager=mongo.Schema({
         type:String,
         required:[true,"Please enter Password"]
     },
+    email:{
+        type:String,
+        required:[true,"Please enter Email"]
+    },
     role:{
         type:String, 
         default:"manager"

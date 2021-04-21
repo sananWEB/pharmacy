@@ -4,7 +4,8 @@ const mongo=require("mongoose")
 const drugs=mongo.Schema({
     name:{
         type:String,
-        required:[true,"Enter the drug name"]
+        required:[true,"Enter the drug name"],
+        unique:true,
     },
     formula:{
         type:String,
@@ -14,7 +15,7 @@ const drugs=mongo.Schema({
         type:Number,
         required:[true,"Enter the drug price"]
     },
-    actualprice:{
+    actualprice:{ 
         type:Number,
         required:[true,"Enter the drug actual price"]
     },

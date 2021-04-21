@@ -24,7 +24,7 @@ exports.register=(req,res)=>{
         var error=err.message;
         res.status(403).json({
             
-            error:error.slice(error.indexOf(":")+2)
+            message:error.slice(error.indexOf(":")+2)
         })
     }) 
 }
